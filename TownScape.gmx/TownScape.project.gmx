@@ -5,9 +5,49 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprites name="Environment">
+      <sprite>sprites\spr_Tree_Hit</sprite>
+      <sprite>sprites\spr_Tree</sprite>
+      <sprite>sprites\spr_Grass_Moving</sprite>
+      <sprite>sprites\spr_Stump</sprite>
+    </sprites>
+    <sprites name="Player and NPCs">
+      <sprites name="Player">
+        <sprite>sprites\spr_Char_ForwardIdleBlink</sprite>
+        <sprite>sprites\spr_Char_LeftIdleBlink</sprite>
+        <sprite>sprites\spr_Char_RightIdleBlink</sprite>
+        <sprite>sprites\spr_Char_ForwardWalk</sprite>
+        <sprite>sprites\spr_Char_LeftWalk</sprite>
+        <sprite>sprites\spr_Char_RightWalk</sprite>
+        <sprite>sprites\spr_Char_BackwardWalk</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="Collisions">
+      <sprite>sprites\spr_collision</sprite>
+    </sprites>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scr_physCollisions.gml</script>
+    <script>scripts\scr_playerPhys.gml</script>
+    <script>scripts\scr_playerAnim.gml</script>
+  </scripts>
+  <objects name="objects">
+    <objects name="Player and NPCs">
+      <object>objects\obj_player</object>
+    </objects>
+    <objects name="Environment">
+      <object>objects\obj_grass</object>
+    </objects>
+    <objects name="Collisions">
+      <object>objects\obj_collision</object>
+    </objects>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\rm_valley</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
