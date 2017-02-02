@@ -11,16 +11,30 @@
       <sprite>sprites\spr_Tree</sprite>
       <sprite>sprites\spr_Grass_Moving</sprite>
       <sprite>sprites\spr_Stump</sprite>
+      <sprite>sprites\spr_glow</sprite>
+      <sprite>sprites\spr_rockBreak</sprite>
+      <sprite>sprites\spr_rockUI</sprite>
+      <sprite>sprites\spr_woodUI</sprite>
     </sprites>
     <sprites name="Player and NPCs">
       <sprites name="Player">
-        <sprite>sprites\spr_Char_ForwardIdleBlink</sprite>
-        <sprite>sprites\spr_Char_LeftIdleBlink</sprite>
-        <sprite>sprites\spr_Char_RightIdleBlink</sprite>
-        <sprite>sprites\spr_Char_ForwardWalk</sprite>
-        <sprite>sprites\spr_Char_LeftWalk</sprite>
-        <sprite>sprites\spr_Char_RightWalk</sprite>
-        <sprite>sprites\spr_Char_BackwardWalk</sprite>
+        <sprites name="Movement">
+          <sprite>sprites\spr_Char_ForwardIdleBlink</sprite>
+          <sprite>sprites\spr_Char_RightIdleBlink</sprite>
+          <sprite>sprites\spr_Char_ForwardWalk</sprite>
+          <sprite>sprites\spr_Char_LeftWalk</sprite>
+          <sprite>sprites\spr_Char_BackwardWalk</sprite>
+          <sprite>sprites\spr_Char_LeftIdleBlink</sprite>
+          <sprite>sprites\spr_Char_RightWalk</sprite>
+        </sprites>
+        <sprites name="Actions">
+          <sprites name="Chop">
+            <sprite>sprites\spr_Char_ChopBack</sprite>
+            <sprite>sprites\spr_Char_ChopForward</sprite>
+            <sprite>sprites\spr_Char_ChopRight</sprite>
+            <sprite>sprites\spr_Char_ChopLeft</sprite>
+          </sprites>
+        </sprites>
       </sprites>
     </sprites>
     <sprites name="Collisions">
@@ -30,9 +44,11 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\scr_physCollisions.gml</script>
-    <script>scripts\scr_playerPhys.gml</script>
-    <script>scripts\scr_playerAnim.gml</script>
+    <scripts name="Player">
+      <script>scripts\scr_playerAnim.gml</script>
+      <script>scripts\scr_playerPhys.gml</script>
+      <script>scripts\scr_physCollisions.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <objects name="Player and NPCs">
@@ -40,9 +56,14 @@
     </objects>
     <objects name="Environment">
       <object>objects\obj_grass</object>
+      <object>objects\obj_tree</object>
     </objects>
     <objects name="Collisions">
       <object>objects\obj_collision</object>
+    </objects>
+    <objects name="Control">
+      <object>objects\obj_nightCycle</object>
+      <object>objects\obj_light</object>
     </objects>
   </objects>
   <rooms name="rooms">
