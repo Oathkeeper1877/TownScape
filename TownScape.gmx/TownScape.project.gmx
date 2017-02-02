@@ -11,6 +11,8 @@
       <sprite>sprites\spr_Tree</sprite>
       <sprite>sprites\spr_Grass_Moving</sprite>
       <sprite>sprites\spr_Stump</sprite>
+      <sprite>sprites\spr_glow</sprite>
+      <sprite>sprites\sprite13</sprite>
     </sprites>
     <sprites name="Player and NPCs">
       <sprites name="Player">
@@ -43,6 +45,10 @@
     </objects>
     <objects name="Collisions">
       <object>objects\obj_collision</object>
+    </objects>
+    <objects name="Control">
+      <object>objects\obj_nightCycle</object>
+      <object>objects\obj_light</object>
     </objects>
   </objects>
   <rooms name="rooms">
