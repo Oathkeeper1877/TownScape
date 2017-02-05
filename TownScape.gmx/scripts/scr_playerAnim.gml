@@ -1,25 +1,25 @@
 //Up Movement
 if (wkey) {
     sprite_index = spr_Char_BackwardWalk;
-    image_speed = 0.125;
+    image_speed = 0.25;
 }
 
 //Left Movement
 if (akey) {
     sprite_index = spr_Char_LeftWalk;
-    image_speed = 0.125;
+    image_speed = 0.25;
 }
 
 //Down Movement
 if (skey) {
     sprite_index = spr_Char_ForwardWalk;
-    image_speed = 0.125;
+    image_speed = 0.25;
 }
 
 //Right Movement
 if (dkey) {
     sprite_index = spr_Char_RightWalk;
-    image_speed = 0.125;
+    image_speed = 0.25;
 }
 
 //Still Up
@@ -33,20 +33,20 @@ if (dkey) {
  if (dir == 1 && nokey) {
     sprite_index = spr_Char_LeftIdleBlink;
     image_index = 0;
-    image_speed = 0.125; 
+    image_speed = 0.25; 
 }
 
 //Still Down
  if ( (dir == 1.5 && nokey) || ((dkey && akey) || (wkey && skey)) ) {
     sprite_index = spr_Char_ForwardIdleBlink;
-    image_speed = 0.125; 
+    image_speed = 0.25; 
 }
 
 //Still Right
  if (dir == 0 && nokey) {
     sprite_index = spr_Char_RightIdleBlink;
     image_index = 0;
-    image_speed = 0.125; 
+    image_speed = 0.25; 
 }
 
 
