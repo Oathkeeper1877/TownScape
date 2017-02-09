@@ -28,14 +28,15 @@
             <string>//Set Variables
 alpha = 0;
 
-dayLength = 10;
-nightLength = 5;
+dayLength = 60;
+nightLength = 40;
 
 //Set Surface
 nightCycleSurf = surface_create(room_width, room_height);
 
 //Set Alarm
 alarm[0] = room_speed * dayLength;
+global.Morning = true;
 </string>
           </argument>
         </arguments>
@@ -59,11 +60,13 @@ alarm[0] = room_speed * dayLength;
           <argument>
             <kind>1</kind>
             <string>if (alpha &gt; 0.0) {
-    alpha -= 0.01
-    alarm[1] = 1;
+    alpha -= 0.0050
+    alarm[1] = 2;
 }
 else if (alpha &lt;= 0) {
-    alarm[0] = room_speed * dayLength;
+    alarm[0] = room_speed * dayLength + random_range(0, 30);
+    global.Morning = true;
+    global.MusicRuns = 0;
 }
 </string>
           </argument>
@@ -87,12 +90,14 @@ else if (alpha &lt;= 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (alpha &lt; 0.8) {
-    alpha += 0.01
-    alarm[0] = 1;
+            <string>if (alpha &lt; 0.85) {
+    alpha += 0.0050
+    alarm[0] = 2;
 }
-else if (alpha &gt;= 0.8) {
-    alarm[1] = room_speed * nightLength;
+else if (alpha &gt;= 0.85) {
+    alarm[1] = room_speed * nightLength  + random_range(0, 30);
+    global.Morning = false;
+    global.MusicRuns = 0;
 }
 </string>
           </argument>

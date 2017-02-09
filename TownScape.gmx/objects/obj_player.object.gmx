@@ -30,6 +30,11 @@ dir = 1.5;
 hspd = 0;
 vspd = 0;
 spd = 3;
+//Music
+global.MusicRuns = 0;
+global.Music = "";
+
+
 </string>
           </argument>
         </arguments>
@@ -57,6 +62,84 @@ spd = 3;
 scr_physCollisions();
 scr_playerPhys();
 scr_playerAnim();
+scr_enviroCol();
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Music
+if (room == rm_valley &amp;&amp; global.Morning == true) {
+    global.Music = snd_VenturingOut;
+}
+if (room == rm_valley &amp;&amp; global.Morning == false) {
+    global.Music = snd_ValleyAir;
+}
+
+
+
+if (global.MusicRuns &lt; 1) {
+audio_stop_all();
+audio_play_sound(global.Music, 0, true);
+global.MusicRuns++;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Chopping Wood
+
+if (ekey)  {
+    if (distance_to_object(obj_tree) &lt; 16 &amp;&amp; dir == 0.5 &amp;&amp; sprite_index != spr_Char_ChopBack) {
+        
+        sprite_index = spr_Char_ChopBack;
+        image_speed = 0.25;
+        image_index = 0; 
+        
+        with (instance_nearest(x,y, obj_tree)) {
+            treeHealth -= 0.5;
+            sprite_index = spr_Tree_Hit;
+            image_speed = 0.25;
+            image_index = 0;
+        }
+    }
+}
+
+ 
 </string>
           </argument>
         </arguments>

@@ -3,7 +3,10 @@ wkey = keyboard_check(ord('W')) || keyboard_check(vk_up);
 akey = keyboard_check(ord('A')) || keyboard_check(vk_left);
 skey = keyboard_check(ord('S')) || keyboard_check(vk_down);
 dkey = keyboard_check(ord('D')) || keyboard_check(vk_right);
-nokey = ( !wkey && !akey && !skey && !dkey );
+ekey = keyboard_check(ord('E'));
+nokey = ( !wkey && !akey && !skey && !dkey && !ekey);
+
+
 
 //Moving Up 
 if (wkey) {

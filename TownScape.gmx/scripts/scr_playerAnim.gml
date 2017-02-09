@@ -32,7 +32,6 @@ if (dkey) {
 //Still Left
  if (dir == 1 && nokey) {
     sprite_index = spr_Char_LeftIdleBlink;
-    image_index = 0;
     image_speed = 0.125; 
 }
 
@@ -45,7 +44,6 @@ if (dkey) {
 //Still Right
  if (dir == 0 && nokey) {
     sprite_index = spr_Char_RightIdleBlink;
-    image_index = 0;
     image_speed = 0.125; 
 }
 
