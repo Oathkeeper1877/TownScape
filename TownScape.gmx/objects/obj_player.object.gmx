@@ -29,7 +29,7 @@
 dir = 1.5;
 hspd = 0;
 vspd = 0;
-spd = 3;
+spd = 2;
 //Music
 global.MusicRuns = 0;
 global.Music = "";
