@@ -22,6 +22,14 @@ if (dkey) {
     image_speed = 0.25;
 }
 
+// Fix A + S
+if (akey && skey) {
+    sprite_index = spr_Char_LeftWalk;
+    image_speed = 0.25;
+}
+
+
+
 //Still Up
  if (dir == 0.5 && nokey) {
     sprite_index = spr_Char_BackwardWalk;
@@ -30,13 +38,13 @@ if (dkey) {
 }
 
 //Still Left
- if (dir == 1 && nokey) {
+ if (dir == 1 && nokey ) {
     sprite_index = spr_Char_LeftIdleBlink;
     image_speed = 0.125; 
 }
 
 //Still Down
- if ( (dir == 1.5 && nokey) || ((dkey && akey) || (wkey && skey)) ) {
+ if ( (dir == 1.5 && nokey ) || ((dkey && akey) || (wkey && skey)) ) {
     sprite_index = spr_Char_ForwardIdleBlink;
     image_speed = 0.125; 
 }
@@ -48,5 +56,5 @@ if (dkey) {
 }
 
 
- 
+
 

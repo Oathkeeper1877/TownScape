@@ -30,11 +30,38 @@ dir = 1.5;
 hspd = 0;
 vspd = 0;
 spd = 2;
+delayTime = -1;
 //Music
 global.MusicRuns = 0;
 global.Music = "";
 
+scr_resources();
 
+randomize();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Create Instances
+
+instance_create(x, y, obj_rockSpawn);
+instance_create(x, y, obj_treeSpawn);
 </string>
           </argument>
         </arguments>
@@ -62,7 +89,6 @@ global.Music = "";
 scr_physCollisions();
 scr_playerPhys();
 scr_playerAnim();
-scr_enviroCol();
 
 
 
@@ -121,25 +147,115 @@ global.MusicRuns++;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Chopping Wood
-
-if (ekey)  {
-    if (distance_to_object(obj_tree) &lt; 16 &amp;&amp; dir == 0.5 &amp;&amp; sprite_index != spr_Char_ChopBack) {
-        
-        sprite_index = spr_Char_ChopBack;
-        image_speed = 0.25;
-        image_index = 0; 
-        
-        with (instance_nearest(x,y, obj_tree)) {
-            treeHealth -= 0.5;
-            sprite_index = spr_Tree_Hit;
-            image_speed = 0.25;
-            image_index = 0;
-        }
+            <string>///Hitting Resources
+if (keyboard_check_pressed(ord('E'))) {
+if (distance_to_object(obj_tree) &lt; 12  &amp;&amp;  delayTime == -1 || distance_to_object(obj_rock) &lt; 12  &amp;&amp;  delayTime == -1) {
+    delayTime = 40;
     }
 }
 
- 
+if (delayTime != -1) { //Goes down until it reaches -1
+    delayTime -= 1;
+}
+
+if (delayTime &gt; 25 &amp;&amp; delayTime &lt;= 40 &amp;&amp; dir == 0.5) { //Facing up, hands up 
+    sprite_index = spr_Char_ChopBack;
+    image_index = 2;
+}
+if (delayTime &gt; 25 &amp;&amp; delayTime &lt;= 40 &amp;&amp; dir == 1) { //Facing left, hands up 
+    sprite_index = spr_Char_ChopLeft;
+    image_index = 2;
+}
+if (delayTime &gt; 25 &amp;&amp; delayTime &lt;= 40 &amp;&amp; dir == 1.5) { //Facing down, hands up 
+    sprite_index = spr_Char_ChopForward;
+    image_index = 2;
+}
+if (delayTime &gt; 25 &amp;&amp; delayTime &lt;= 40 &amp;&amp; dir == 0) { //Facing right, hands up 
+    sprite_index = spr_Char_ChopRight;
+    image_index = 2;
+}
+
+if (delayTime == 25) { //When the player chops, play the hit sound
+    audio_play_sound(snd_hitTree, 0, false);
+}
+
+if (delayTime &gt; -1 &amp;&amp; delayTime &lt;= 25 &amp;&amp; dir == 0.5) { //Facing up, hands down
+    sprite_index = spr_Char_ChopBack;
+    image_index = 8;
+}
+if (delayTime &gt; -1 &amp;&amp; delayTime &lt;= 25 &amp;&amp; dir == 1) { //Facing left, hands down
+    sprite_index = spr_Char_ChopLeft;
+    image_index = 8;
+}
+if (delayTime &gt; -1 &amp;&amp; delayTime &lt;= 25 &amp;&amp; dir == 1.5) { //Facing down, hands down
+    sprite_index = spr_Char_ChopForward;
+    image_index = 8;
+}
+if (delayTime &gt; -1 &amp;&amp; delayTime &lt;= 25 &amp;&amp; dir == 0) { //Facing right, hands down
+    sprite_index = spr_Char_ChopRight;
+    image_index = 8;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Rectangle
+draw_set_color(c_black);
+draw_set_alpha(0.5);
+draw_rectangle(0, 0, 160, 132, false);
+
+//Sprites and Text
+draw_set_alpha(1);
+draw_set_color(c_white);
+draw_set_font(fnt_GUI);
+draw_sprite(spr_woodUI, -1, 16, 16);
+draw_text(96, 36, global.woodCol);
+draw_sprite(spr_rockUI, -1, 16, 48);
+draw_text(96, 80, global.rockCol);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+draw_sprite_shadow(sprite_index, image_index, x, y, 4, 120, c_black, 0.50); 
 </string>
           </argument>
         </arguments>

@@ -41,6 +41,7 @@
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\HappyTear Text-Dialogue Engine</extension>
+    <extension index="1">extensions\Draw Sprite Shadow</extension>
   </NewExtensions>
   <sounds name="sound">
     <sounds name="Music">
@@ -48,6 +49,9 @@
       <sound>sound\snd_ValleyAir</sound>
       <sound>sound\snd_Roaming</sound>
       <sound>sound\snd_NormalBattle</sound>
+      <sounds name="Sounds">
+        <sound>sound\snd_hitTree</sound>
+      </sounds>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -57,6 +61,7 @@
       <sprite>sprites\spr_Grass_Moving</sprite>
       <sprite>sprites\spr_Stump</sprite>
       <sprite>sprites\spr_glow</sprite>
+      <sprite>sprites\spr_shadow</sprite>
       <sprite>sprites\spr_rockBreak</sprite>
       <sprite>sprites\spr_rockUI</sprite>
       <sprite>sprites\spr_woodUI</sprite>
@@ -108,11 +113,11 @@
     <scripts name="Player">
       <script>scripts\scr_playerAnim.gml</script>
       <script>scripts\scr_playerPhys.gml</script>
-      <script>scripts\scr_enviroCol.gml</script>
       <script>scripts\scr_physCollisions.gml</script>
       <scripts name="States">
         <script>scripts\scr_choppingWood.gml</script>
       </scripts>
+      <script>scripts\scr_resources.gml</script>
     </scripts>
     <scripts name="Text Engine">
       <script>scripts\text_setup.gml</script>
@@ -226,8 +231,15 @@
         <script>scripts\text_demo12_onlyonce.gml</script>
       </scripts>
     </scripts>
+    <scripts name="Draw Shadow">
+      <script>scripts\draw_shadow_ext.gml</script>
+      <script>scripts\draw_shadow.gml</script>
+      <script>scripts\draw_sprite_shadow.gml</script>
+      <script>scripts\draw_sprite_ext_shadow.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
+    <font>fonts\fnt_GUI</font>
     <fonts name="Text Engine - Texts">
       <font>fonts\fnt_speach</font>
       <font>fonts\fnt_speach_bold</font>
@@ -247,6 +259,7 @@
       <object>objects\obj_grass</object>
       <object>objects\obj_stump</object>
       <object>objects\obj_tree</object>
+      <object>objects\obj_rock</object>
     </objects>
     <objects name="Collisions">
       <object>objects\obj_collision</object>
@@ -255,6 +268,10 @@
       <object>objects\obj_nightCycle</object>
       <object>objects\obj_light</object>
       <object>objects\obj_textEngine</object>
+      <objects name="Spawn">
+        <object>objects\obj_treeSpawn</object>
+        <object>objects\obj_rockSpawn</object>
+      </objects>
     </objects>
     <objects name="Text Engine - Demo Objects">
       <object>objects\obj_text_control</object>
