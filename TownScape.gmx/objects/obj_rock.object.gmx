@@ -25,11 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>rockHealth = 20;
+            <string>maxRockHealth = 20;
+rockHealth = maxRockHealth;
 sprite_index = spr_rockBreak;
 image_index = 0;
 image_speed = 0;
 delayTime = -1;
+rockIsHit = false;
 </string>
           </argument>
         </arguments>
@@ -58,7 +60,6 @@ if (distance_to_object(obj_player) &lt; 12  &amp;&amp;  delayTime = -1) {
     sprite_index = spr_rockBreak;
     image_speed = 0.15;
     image_index = 0;
-    rockHealth -= 1;
     delayTime = 40;
     }
 }
@@ -68,6 +69,8 @@ if (delayTime != -1) {
 }
 
 if (delayTime == 5) {
+    rockIsHit = true;
+    rockHealth -= 1;
     sprite_index = spr_rockBreak;
     image_index = 6;
     image_speed = 0;
@@ -96,6 +99,36 @@ if (rockHealth &lt;= 0) {
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+
+
+var hp;
+hp = (rockHealth/maxRockHealth) * 100;
+if (rockIsHit == true) {
+    draw_healthbar(x, y - 16, x + 16, y + 64, hp, c_black, c_red, c_silver, 3, true, true)
+}
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>

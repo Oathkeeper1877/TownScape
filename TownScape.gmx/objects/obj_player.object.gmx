@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialize Variables
+            <string>randomize(); //Randomizes game seed
+///Initialize Variables
 dir = 1.5;
 hspd = 0;
 vspd = 0;
@@ -35,9 +36,19 @@ delayTime = -1;
 global.MusicRuns = 0;
 global.Music = "";
 
-scr_resources();
+scr_resources(); //Manages Resources
 
-randomize();
+//Player Stats
+hpDelay = -1;
+stDelay = -1;
+nmDelay = -1;
+
+playerHp = 100;
+maxPlayerHp = 100;
+playerSt = 50;
+maxPlayerSt = 50;
+playerNm = 100
+maxPlayerNm = 100;
 </string>
           </argument>
         </arguments>
@@ -86,8 +97,8 @@ instance_create(x, y, obj_treeSpawn);
             <kind>1</kind>
             <string>///Player Control
 
-scr_physCollisions();
 scr_playerPhys();
+scr_physCollisions();
 scr_playerAnim();
 
 
@@ -114,10 +125,10 @@ scr_playerAnim();
             <kind>1</kind>
             <string>///Music
 if (room == rm_valley &amp;&amp; global.Morning == true) {
-    global.Music = snd_VenturingOut;
+    global.Music = snd_ValleyAir;
 }
 if (room == rm_valley &amp;&amp; global.Morning == false) {
-    global.Music = snd_ValleyAir;
+    global.Music = snd_Roaming;
 }
 
 
@@ -177,6 +188,7 @@ if (delayTime &gt; 25 &amp;&amp; delayTime &lt;= 40 &amp;&amp; dir == 0) { //Fac
 
 if (delayTime == 25) { //When the player chops, play the hit sound
     audio_play_sound(snd_hitTree, 0, false);
+    playerSt -= 15;
 }
 
 if (delayTime &gt; -1 &amp;&amp; delayTime &lt;= 25 &amp;&amp; dir == 0.5) { //Facing up, hands down
@@ -196,6 +208,75 @@ if (delayTime &gt; -1 &amp;&amp; delayTime &lt;= 25 &amp;&amp; dir == 0) { //Fac
     image_index = 8;
 }
 
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Player Stats
+//Control
+if (playerNm &lt; 0) playerNm = 0;
+if (playerNm &gt; maxPlayerNm) playerNm = maxPlayerNm;
+if (playerHp &lt; 0) playerHp = 0;
+if (playerHp &gt; maxPlayerHp) playerHp = maxPlayerHp;
+if (playerSt &lt; 0) playerSt= 0;
+if (playerSt &gt; maxPlayerSt) playerSt = maxPlayerSt;
+
+
+
+//Nourishment Depletion
+if (nmDelay == -1) {
+    nmDelay = 80;
+    playerNm -= 1;
+    } 
+if (nmDelay != -1) { 
+    nmDelay -= 1;
+}
+
+
+//Health Depletion from Nourishment
+if (playerNm &lt;= 0) {
+    if (hpDelay == -1) {
+        hpDelay = 40;
+        playerHp -= 1;
+    }
+}
+
+if (hpDelay != -1) {
+        hpDelay -= 1;
+    }
+
+//Healing from full Nourishment
+
+
+//Stamina Control
+if (playerSt &lt; maxPlayerSt) {
+     if (stDelay == -1) {
+        stDelay = 10;
+        playerSt += 1;
+    }
+}
+if (stDelay != -1) {
+        stDelay -= 1;
+    } 
 </string>
           </argument>
         </arguments>
@@ -218,7 +299,9 @@ if (delayTime &gt; -1 &amp;&amp; delayTime &lt;= 25 &amp;&amp; dir == 0) { //Fac
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Rectangle
+            <string>///Item collection
+
+//Rectangle
 draw_set_color(c_black);
 draw_set_alpha(0.5);
 draw_rectangle(0, 0, 160, 132, false);
@@ -232,6 +315,34 @@ draw_text(96, 36, global.woodCol);
 draw_sprite(spr_rockUI, -1, 16, 48);
 draw_text(96, 80, global.rockCol);
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Player Stats
+hp = (playerHp / maxPlayerHp) * 100;
+st = (playerSt / maxPlayerSt) * 100;
+nm = (playerNm / maxPlayerNm) * 100;
+
+draw_healthbar(182, 656, 364, 688, nm, c_black, c_silver, c_blue, 1, true, true);
+draw_healthbar(546, 656, 728, 688, hp, c_black, c_silver, c_green, 1, true, true);
+draw_healthbar(910, 656, 1092, 688, st, c_black, c_silver, c_yellow, 0, true, true);
 </string>
           </argument>
         </arguments>

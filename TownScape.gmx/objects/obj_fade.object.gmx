@@ -3,8 +3,8 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
-  <persistent>0</persistent>
+  <depth>-99999999</depth>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,14 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.numOfTrees = random_range(30, 51);
+            <string>alpha = 0;
+fade = 1;
 
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -49,17 +50,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.numOfTrees &gt;= 0) {
-        newTree = instance_create(random(room_width), random(room_height), obj_tree);
-        
-        with (newTree) {
-        if (distance_to_object(obj_tree) &lt; 128 || distance_to_object(obj_rock) &lt; 64 || distance_to_object(obj_player) &lt; 64) {
-            instance_destroy();
-            global.numOfTrees++
-        }
-        global.numOfTrees--;
-    }
+            <string>alpha = clamp(alpha + (fade * 0.05), 0, 1);
+
+if (alpha == 1) {
+    room_goto(global.rm);
+    fade = -1
 }
+
+if (alpha == 0 &amp;&amp; fade == -1) {
+    instance_destroy();
+}
+
+draw_set_color(c_black);
+draw_set_alpha(alpha);
+draw_rectangle(view_xview[0], view_yview[0], view_xview[0] + view_wview[0], view_yview[0] + view_hview[0], 0);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

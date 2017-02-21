@@ -20,3 +20,6 @@ if (place_meeting(x, y + vspd, obj_collision)) {
 
 //Move Vertically
 y += vspd;
+
+
+

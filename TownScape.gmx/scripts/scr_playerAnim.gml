@@ -1,3 +1,4 @@
+
 //Up Movement
 if (wkey) {
     sprite_index = spr_Char_BackwardWalk;

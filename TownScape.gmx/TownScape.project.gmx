@@ -44,17 +44,28 @@
     <extension index="1">extensions\Draw Sprite Shadow</extension>
   </NewExtensions>
   <sounds name="sound">
+    <sounds name="Sounds">
+      <sound>sound\snd_hitTree</sound>
+      <sound>sound\snd_menu</sound>
+      <sound>sound\snd_select</sound>
+    </sounds>
     <sounds name="Music">
       <sound>sound\snd_VenturingOut</sound>
       <sound>sound\snd_ValleyAir</sound>
       <sound>sound\snd_Roaming</sound>
       <sound>sound\snd_NormalBattle</sound>
-      <sounds name="Sounds">
-        <sound>sound\snd_hitTree</sound>
-      </sounds>
     </sounds>
   </sounds>
   <sprites name="sprites">
+    <sprites name="Text Engine - Sprites">
+      <sprite>sprites\spr_textnext</sprite>
+      <sprite>sprites\spr_textend</sprite>
+      <sprites name="demo">
+        <sprite>sprites\spr_text_demo_wall</sprite>
+        <sprite>sprites\spr_text_demo_player</sprite>
+        <sprite>sprites\spr_man</sprite>
+      </sprites>
+    </sprites>
     <sprites name="Environment">
       <sprite>sprites\spr_Tree_Hit</sprite>
       <sprite>sprites\spr_Tree</sprite>
@@ -91,14 +102,9 @@
       <sprite>sprites\spr_collision</sprite>
       <sprite>sprites\spr_newMask</sprite>
     </sprites>
-    <sprites name="Text Engine - Sprites">
-      <sprite>sprites\spr_textnext</sprite>
-      <sprite>sprites\spr_textend</sprite>
-      <sprites name="demo">
-        <sprite>sprites\spr_text_demo_wall</sprite>
-        <sprite>sprites\spr_text_demo_player</sprite>
-        <sprite>sprites\spr_man</sprite>
-      </sprites>
+    <sprites name="GUI">
+      <sprite>sprites\spr_ArrowGUI</sprite>
+      <sprite>sprites\spr_Title</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -107,6 +113,7 @@
         <background>background\bkg_sign_new</background>
       </backgrounds>
     </backgrounds>
+    <background>background\bkg_wood</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -118,6 +125,7 @@
         <script>scripts\scr_choppingWood.gml</script>
       </scripts>
       <script>scripts\scr_resources.gml</script>
+      <script>scripts\scr_menu.gml</script>
     </scripts>
     <scripts name="Text Engine">
       <script>scripts\text_setup.gml</script>
@@ -240,6 +248,7 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_GUI</font>
+    <font>fonts\fnt_Cool</font>
     <fonts name="Text Engine - Texts">
       <font>fonts\fnt_speach</font>
       <font>fonts\fnt_speach_bold</font>
@@ -272,6 +281,11 @@
         <object>objects\obj_treeSpawn</object>
         <object>objects\obj_rockSpawn</object>
       </objects>
+      <objects name="Menu GUI">
+        <object>objects\obj_menu</object>
+        <object>objects\obj_Title</object>
+        <object>objects\obj_fade</object>
+      </objects>
     </objects>
     <objects name="Text Engine - Demo Objects">
       <object>objects\obj_text_control</object>
@@ -285,6 +299,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_start</room>
     <room>rooms\rm_valley</room>
     <rooms name="Text Engine - Demo Rooms">
       <room>rooms\text_demo_room</room>
