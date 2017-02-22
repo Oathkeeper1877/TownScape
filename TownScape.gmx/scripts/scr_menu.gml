@@ -6,6 +6,7 @@ switch (mpos) {
     }
     case 1: { //Continue
         audio_play_sound(snd_select, 0, false);
+        game_load("save1.sav");
         break;
     }
     case 2: { //Options

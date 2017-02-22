@@ -56,6 +56,8 @@ treeIsHit = false;
             <kind>1</kind>
             <string>///Chopping Wood
 if (keyboard_check_pressed(ord('E'))) {
+
+
 if (distance_to_object(obj_player) &lt; 12  &amp;&amp;  delayTime = -1) {
     sprite_index = spr_Tree_Hit;
     image_speed = 0.25;
@@ -63,6 +65,8 @@ if (distance_to_object(obj_player) &lt; 12  &amp;&amp;  delayTime = -1) {
     delayTime = 40;
     
     }
+   
+    
 }
 
 if (delayTime != -1) {
