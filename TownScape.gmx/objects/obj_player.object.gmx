@@ -25,6 +25,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Create Instances
+
+instance_create(x, y, obj_rockSpawn);
+instance_create(x, y, obj_treeSpawn);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>other</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Initialize Game/Player Vars
 
 randomize(); //Randomizes game seed
@@ -51,55 +75,9 @@ playerHp = 100;
 maxPlayerHp = 100;
 playerSt = 50;
 maxPlayerSt = 50;
-playerNm = 100
+playerNm = 100;
 maxPlayerNm = 100;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Create Instances
 
-instance_create(x, y, obj_rockSpawn);
-instance_create(x, y, obj_treeSpawn);
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Save Vars
-saveDelay = -1;
-global.Save = false;
 </string>
           </argument>
         </arguments>
@@ -151,10 +129,16 @@ scr_playerAnim();
           <argument>
             <kind>1</kind>
             <string>///Music
-if (room == rm_valley &amp;&amp; global.Morning == true) {
+//Time
+if (!instance_exists(obj_nightCycle)) {
+    instance_create(x, y, obj_nightCycle);
+}
+
+//Music
+if (global.rm == rm_valley &amp;&amp; global.Morning == 'true') {
     global.Music = snd_ValleyAir;
 }
-if (room == rm_valley &amp;&amp; global.Morning == false) {
+if (global.rm == rm_valley &amp;&amp; global.Morning == 'false') {
     global.Music = snd_Roaming;
 }
 
@@ -311,42 +295,6 @@ if (playerSt &lt; maxPlayerSt) {
 if (stDelay != -1) {
         stDelay -= 1;
     } 
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Save Function
-
-if (global.Save == true) {
-    if (saveDelay == -1) {
-        saveDelay = 10;
-    }
-}
-
-if (saveDelay != -1) {
-    saveDelay -= 1;
-    }
-
-if (saveDelay == 0) {
-    global.Save = false;
-    game_save("save1.sav");
-}
 </string>
           </argument>
         </arguments>

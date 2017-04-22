@@ -138,12 +138,13 @@
       <script>scripts\scr_playerAnim.gml</script>
       <script>scripts\scr_playerPhys.gml</script>
       <script>scripts\scr_physCollisions.gml</script>
-      <scripts name="States">
-        <script>scripts\scr_choppingWood.gml</script>
-      </scripts>
       <script>scripts\scr_resources.gml</script>
-      <script>scripts\scr_menu.gml</script>
-      <script>scripts\scr_pauseMenu.gml</script>
+      <scripts name="Functions">
+        <script>scripts\scr_pauseMenu.gml</script>
+        <script>scripts\scr_menu.gml</script>
+        <script>scripts\ini_load.gml</script>
+        <script>scripts\ini_save.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Text Engine">
       <script>scripts\text_setup.gml</script>
@@ -292,6 +293,7 @@
       <object>objects\obj_collision</object>
     </objects>
     <objects name="Control">
+      <object>objects\obj_save</object>
       <object>objects\obj_nightCycle</object>
       <object>objects\obj_light</object>
       <object>objects\obj_textEngine</object>

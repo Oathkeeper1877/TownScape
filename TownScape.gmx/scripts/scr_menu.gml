@@ -7,6 +7,9 @@ switch (mpos) {
     case 1: { //Continue
         audio_play_sound(snd_select, 0, false);
         game_load("save1.sav");
+        ini_open('control.ini');
+        global.Morning = ini_read_string('Time', 'Morning', 'true');
+        ini_close();
         break;
     }
     case 2: { //Options

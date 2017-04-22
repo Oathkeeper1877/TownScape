@@ -9,12 +9,14 @@ switch (mpos) {
         audio_play_sound(snd_select, 0, false);
         instance_activate_all();
         instance_destroy();
-        global.Save = true;
+        instance_create(x, y, obj_save);
         break;
     } 
     case 2: { //Load
         audio_play_sound(snd_select, 0, false);
-        game_load("save1.sav")
+        instance_activate_all();
+        instance_destroy();
+        game_load("save1.sav");
         break;
     }
     case 3: { //Options

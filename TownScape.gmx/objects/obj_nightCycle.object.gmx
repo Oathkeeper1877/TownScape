@@ -34,9 +34,13 @@ nightLength = 40;
 //Set Surface
 nightCycleSurf = surface_create(room_width, room_height);
 
+
 //Set Alarm
+ini_open('control.ini');
+global.Morning = 'true';
+ini_close();
 alarm[0] = room_speed * dayLength;
-global.Morning = true;
+
 </string>
           </argument>
         </arguments>
@@ -65,7 +69,7 @@ global.Morning = true;
 }
 else if (alpha &lt;= 0) {
     alarm[0] = room_speed * dayLength + random_range(0, 30);
-    global.Morning = true;
+    global.Morning = 'true';
     global.MusicRuns = 0;
 }
 </string>
@@ -96,7 +100,7 @@ else if (alpha &lt;= 0) {
 }
 else if (alpha &gt;= 0.85) {
     alarm[1] = room_speed * nightLength  + random_range(0, 30);
-    global.Morning = false;
+    global.Morning = 'false';
     global.MusicRuns = 0;
 }
 </string>
@@ -121,7 +125,13 @@ else if (alpha &gt;= 0.85) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//If Outside
+            <string>if (!surface_exists(nightCycleSurf)) 
+   {
+   nightCycleSurf = surface_create(room_width, room_height);
+   }
+
+   
+//If Outside
 if (room == rm_valley) {
     surface_set_target(nightCycleSurf);
     draw_clear(c_black);
